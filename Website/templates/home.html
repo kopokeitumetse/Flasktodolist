@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block head %}  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">{% endblock %}
+
+{% block title%}Home{%endblock%}
+
+
+
+{% block content %}
+<div class="To_do_list">
+    <h2>TODO LIST</h2>
+    <form method="POST">
+    <h3>Add Item</h3>
+    <p>
+        <input id="new-task" name = "note" type="text">
+        <button type="submit">Add</button>
+    </p>
+
+    </form>
+    <h3>Todo</h3>
+    <ul id="incomplete-tasks">
+        {% for note in user.notes %}
+        {% if note.done is none %}
+        <li><label>{{note.data}}</label><input type="text">
+            <button class="edit" onclick="noteDone({{note.id}})">Done</button>
+            <button class="delete" onclick="deleteNote({{note.id}})">Delete</button></li>
+        {% endif %}
+        {% endfor %}
+    </ul>
+
+    <h3>Completed</h3>
+    <ul id="completed-tasks">
+
+        {% for note in user.notes %}
+        {% if note.done == "Done" %}
+        <li><label>{{note.data}}</label>  
+            <button class="delete" onclick="deleteNote({{note.id}})">Delete</button>
+        </li>
+        {% endif %}
+        {% endfor %}
+    </ul>
+</div>
+
+{%endblock%}
+
+{% block script %}
+<script type="text/JavaScript" src="{{ url_for('static', filename='index.js') }}"></script>
+{% endblock %}

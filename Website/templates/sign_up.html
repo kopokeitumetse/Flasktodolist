@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title%}sign_up{%endblock%}
+
+{%block content %}
+
+<form class="login" method="POST">
+  <h2>Sign up page</h2>
+  <p>Please Sign Up</p>
+  <input type="text" name= "username" id = 'username' placeholder="User Name" />
+  <input type="text" name= "fullName" id='fullName'placeholder="Full Name " />
+  <input type="password" name="password1" id = 'password1' placeholder="Password" />
+  <input type="password" name="password2" id = 'password2' placeholder=" confrirm Password" />
+  <input type="submit" value="Sign Up" />
+  <div class="links">
+   
+    <a href="#">Log in</a>
+  </div>
+</form> {%endblock%}
+
+  {% block head %}
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='login.css') }}">
+{% endblock %}
